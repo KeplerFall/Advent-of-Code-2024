@@ -41,3 +41,6 @@ function partTwo(list: string){
 
     return occurrences;
 }
+
+partOne(list());
+partTwo(list());
