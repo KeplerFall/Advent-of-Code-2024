@@ -6,13 +6,11 @@ function xValidator(x,y,list2d){
     for(let i = -3; i < 4; i++){
         for(let j = -3; j < 4; j++){
             if(i == 0 && j == 0) continue;
-            if((Math.abs(i) == Math.abs(j)) || ((i == 0 && j != 0) || (j == 0 && i != 0))){
-                if(list2d[x+i] && (list2d[x+i][y+j] == xmas[Math.abs(i) || Math.abs(j)])){
-                    let xcord = i < 0 ? `-` : i == 0 ? `0` : `+`;
-                    let ycord = j < 0 ? `-` : j == 0 ? `0` : `+`;
-                    results[`${xcord}${ycord}`] ? results[`${xcord}${ycord}`] += 1 : results[`${xcord}${ycord}`] = 1;
-                }
-            }
+            if(!(Math.abs(i) == Math.abs(j)) || ((i == 0 && j != 0) || (j == 0 && i != 0))) continue;
+            if(!(list2d[x+i] && (list2d[x+i][y+j] == xmas[Math.abs(i) || Math.abs(j)]))) continue;
+            let xcord = i < 0 ? `-` : i == 0 ? `0` : `+`;
+            let ycord = j < 0 ? `-` : j == 0 ? `0` : `+`;
+            results[`${xcord}${ycord}`] ? results[`${xcord}${ycord}`] += 1 : results[`${xcord}${ycord}`] = 1;
         }
     }
     return Object.values(results).filter(item => item == 3).length
